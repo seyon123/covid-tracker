@@ -1,0 +1,22 @@
+.footer {
+    height: 100px;
+    width: 100%;
+    background: #232323;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer p {
+    line-height: 24px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+}
+
+.footer a {
+    color: #8e61e2;
+    text-decoration: none;
+}

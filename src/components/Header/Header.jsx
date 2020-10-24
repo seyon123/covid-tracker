@@ -1,0 +1,15 @@
+import React from "react";
+
+import styles from "./Header.module.css";
+
+const Footer = () => {
+    return (
+        <div className={styles.navbar}>
+                <h1>
+                    C<img src="logo.png" width="30" alt="logo"/>VID-19 Tracker
+                </h1>
+            </div>
+    );
+};
+
+export default Footer;

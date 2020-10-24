@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.card {
+    color: white;
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #232323;
+}
+
+.card h2{
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+.card h3{
+    display: inline;
+    margin: 0px;
+    font-size: 30px;
+}
+
+.card h4{
+   margin: 0px;
+   padding-top: 15px;
+   float: right;
+}
+
+.confirmed {
+    color: #5851DB;
+}
+
+.recovered {
+    color: rgb(0, 197, 0);
+}
+
+.deaths {
+    color: rgb(204, 2, 2);
+}
+
+.updated{
+    color: white;
+}

@@ -1,0 +1,29 @@
+.formControl {
+    width: 100%;
+    margin: 30px 0 !important;
+    text-align: center;
+}
+
+.dropDown {
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border: none;
+    text-align: center;
+    background-color: #232323;
+    color: white;
+}
+
+.dropDown option{
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: none;
+  text-align: center;
+  background-color: #232323;
+  color: white;
+}
+

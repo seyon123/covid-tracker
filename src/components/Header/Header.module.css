@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #232323;
+    overflow: hidden;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+img {
+    margin-bottom: -3px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2rem;
+    float: left;
+    margin: auto 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        min-width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}

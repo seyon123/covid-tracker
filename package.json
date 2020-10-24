@@ -6,9 +6,16 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.20.0",
+    "chart.js": "^2.9.4",
+    "chartjs-plugin-zoom": "^0.7.7",
+    "classnames": "^2.2.6",
     "react": "^17.0.1",
+    "react-chartjs-2": "^2.10.0",
+    "react-countup": "^4.3.3",
     "react-dom": "^17.0.1",
-    "react-scripts": "3.4.4"
+    "react-scripts": "3.4.4",
+    "semantic-ui-react": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
