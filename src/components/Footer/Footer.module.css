@@ -12,6 +12,7 @@
 .footer p {
     line-height: 24px;
     font-size: 16px;
+    padding: 0;
     color: white;
     text-align: center;
 }
@@ -19,4 +20,11 @@
 .footer a {
     color: #8e61e2;
     text-decoration: none;
+}
+
+@media screen and (max-width: 1140px) {
+    .footer p {
+        line-height: 24px;
+        font-size: 14px;
+    }
 }

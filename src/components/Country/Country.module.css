@@ -16,6 +16,13 @@
     color: white;
 }
 
+.title {
+  text-align: center;
+  display: block;
+  width: calc(100%);
+  margin: 30px 0;
+}
+
 .dropDown option{
   padding: 10px;
   border-radius: 10px;

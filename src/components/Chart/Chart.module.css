@@ -7,10 +7,6 @@
     padding: 20px;
 }
 
-p {
-    color: #666666;
-}
-
 @media screen and (max-width: 1140px) {
     .container{
         width: calc(100% - 100px);

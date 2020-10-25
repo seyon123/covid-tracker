@@ -38,4 +38,15 @@ td {
         width: calc(100% - 100px);
         padding: 20px;
     }
-  }
+
+    table {
+        font-size: 12px; 
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    table {
+        font-size: 10px; 
+    }
+}

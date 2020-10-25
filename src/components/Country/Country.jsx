@@ -15,12 +15,14 @@ const Countries = ({ handleCountryChange, countryIn },) => {
     }, []);
     return (
         <form className={styles.formControl}>
+            <h1 className={styles.title}>{countryIn ? countryIn : "Global"}</h1>
             <select
                 className={styles.dropDown}
                 defaultValue=""
                 onChange={(e) => handleCountryChange(e.target.value)}
             >
-                <option value={countryIn}>{countryIn ? countryIn : "Global"}</option>
+                
+                {countryIn ? <option value={countryIn}>{countryIn}</option> : <option value={""} >Global</option>}
                 {countries.map((country, i) => (
                     <option key={i} value={country}>
                         {country}

@@ -33,7 +33,7 @@ export const fetchDailyData = async (country) => {
                 data: {timeline: {cases, deaths, recovered}},
             } = await axios.get(url2);
             return {cases, deaths, recovered}
-        }else{
+        }else {
             const{ 
                 data: {cases, deaths, recovered},
             } = await axios.get(url1);

@@ -6,10 +6,24 @@
 }
 
 .content {
-    min-height: calc(100vh - 171px);
+    min-height: calc(100vh - 201px);
     width: 100%;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
+.disclaimer {
+    color: #666666;
+    display: inline;
+    width: 1100px;
+}
+
+@media screen and (max-width: 1140px) {
+    .disclaimer{
+        width: calc(100% - 60px);
+        font-size: 14px;
+    }
+  }

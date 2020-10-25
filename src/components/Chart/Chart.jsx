@@ -57,11 +57,8 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
     ) : null;
 
     return (
-        <div>
-            <div className={styles.container}>
-                {lineChart}
-            </div>
-            <p>* Some data may be unavailable or incorrect due to reporting errors and / or misssing data </p>
+        <div className={styles.container}>
+            {lineChart}
         </div>
     );
 };

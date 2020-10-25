@@ -61,6 +61,7 @@ class App extends React.Component {
         		<Cards data={data}/>
         		<Chart data={chartData} country={country} />
         		{(country === "" || country === undefined || provinceData[0].province === "mainland") ? "" : <Provinces provinces={provinceData} country={country}/>}
+				<p className={styles.disclaimer}>* Realtime data from credible sources linked below. Actual numbers might take time to be reflected. </p>
 			</div>
 		)}
         <Footer/>
