@@ -11,10 +11,9 @@ export const fetchData = async (country) => {
 
     try {
         const {
-            data: { cases, todayCases, recovered, todayRecovered, deaths, todayDeaths, updated },
+            data: { cases, todayCases, recovered, todayRecovered, deaths, todayDeaths, active, critical, tests, updated },
         } = await axios.get(changeableUrl);
-        //console.log( { cases, todayCases, recovered, todayRecovered, deaths, todayDeaths, updated });
-        return { cases, todayCases, recovered, todayRecovered, deaths, todayDeaths, updated };
+        return { cases, todayCases, recovered, todayRecovered, deaths, todayDeaths, active, critical, tests, updated };
         
     } catch (error) {
         return error;
@@ -40,12 +39,42 @@ export const fetchDailyData = async (country) => {
             } = await axios.get(url1);
             return {cases, deaths, recovered}
         }
-        //console.log({cases, deaths, recovered});
         
     } catch (error) {
         return error;
     }
 };
+
+export const fetchProvince = async (country) => {
+    let url = `${api}/historical/${country}/?lastdays=1`;
+    
+    try {
+        const{
+            data: {province},
+        } = await axios.get(url);
+
+        return {province}
+        
+    } catch (error) {
+        return error;
+    }
+}
+
+export const fetchProvinceData = async (country, province) => {
+    let url = `${api}/historical/${country}/${province}?lastdays=1`;
+
+    try {
+        if (province) {
+        const{
+            data: {timeline: {cases, deaths, recovered}},
+        } = await axios.get(url);
+
+        return {province, cases, deaths, recovered}
+        }
+    } catch (error) {
+        return error;
+    }
+}
 
 
 
@@ -59,16 +88,3 @@ export const fetchCountries = async () => {
         return error;
     }
 };
-
-
-// export const fetchCountries = async () => {
-//     try {
-//         const {
-//             data: { countries },
-//         } = await axios.get(`${api}/countries`);
-//         console.log(countries.map((country) => country.name));
-//         return countries.map((country) => country.name);
-//     } catch (error) {
-//         return error;
-//     }
-// };

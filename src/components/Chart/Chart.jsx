@@ -1,52 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { fetchDailyData } from "../../api";
+import React from "react";
 import { Line } from "react-chartjs-2";
-import "chartjs-plugin-zoom";
 
 import styles from "./Chart.module.css";
 
 const Chart = ({ data: { cases, deaths, recovered }, country }) => {
-    const [dailyData, setDailyData] = useState({});
 
-    useEffect(() => {
-        const fetchAPI = async () => {
-            const initialDailyData = await fetchDailyData(country);
-            setDailyData(initialDailyData);
-        };
-        fetchAPI();
-    });
-
-    //console.log(dailyData);
-
-    // const barChart = (
-    //   cases ? (
-    //       <Bar
-    //         data={{
-    //           labels: ['Confirmed', 'Recovered', 'Deaths'],
-    //           datasets: [
-    //             {
-    //               label: 'People',
-    //               backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
-    //               data: [cases, recovered, deaths],
-    //             },
-    //           ],
-    //         }}
-    //         options={{
-    //           legend: { display: false },
-    //           title: { display: true, text: `Current state in ${country}` },
-    //         }}
-    //       />
-    //     ) : null
-    //   );
-    //console.log(dailyData);
-    // console.log(Object.keys(dailyData.cases).map(function(date1,index) {date1 = new Date(date1).toLocaleDateString}));
-    const lineChart = Object.keys(dailyData)[0] ? (
+    const lineChart = cases ? (
         <Line
             data={{
-                labels: Object.keys(dailyData.cases),
+                labels: Object.keys(cases),
                 datasets: [
                     {
-                        data: Object.values(dailyData.cases),
+                        data: Object.values(cases),
                         label: "Confirmed",
                         borderColor: "#3333FF",
                         fill: true,
@@ -55,7 +20,7 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
 						
                     },
                     {
-                        data: Object.values(dailyData.recovered),
+                        data: Object.values(recovered),
                         label: "Recovered",
                         borderColor: "green",
                         backgroundColor: "rgba(0,255,0,0.3)",
@@ -64,7 +29,7 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
 						pointHoverRadius: 5,
 					},
 					{
-                        data: Object.values(dailyData.deaths),
+                        data: Object.values(deaths),
                         label: "Deaths",
                         borderColor: "red",
                         backgroundColor: "rgba(255,0,0,0.5)",
@@ -80,11 +45,6 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
 				scales: {
 					xAxes: [
 					  {
-						// type: 'time',
-						// time: {
-						//   unit: 'day',
-						//   tooltipFormat: 'lll',
-						// },
 						ticks: {
 						  maxTicksLimit: 12,
 						},
@@ -96,7 +56,14 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
         />
     ) : null;
 
-    return <div className={styles.container}>{lineChart}</div>;
+    return (
+        <div>
+            <div className={styles.container}>
+                {lineChart}
+            </div>
+            <p>* Some data may be unavailable or incorrect due to reporting errors and / or misssing data </p>
+        </div>
+    );
 };
 
 export default Chart;

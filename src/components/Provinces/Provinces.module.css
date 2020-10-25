@@ -1,0 +1,41 @@
+.container{
+    display: flex;
+    justify-content: center;
+    width: 1060px;
+    margin: 30px;
+    background-color: #232323;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    color: white;
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+th{
+    border-bottom: 1px solid #AAAAAA;
+    padding: 10px;
+}
+
+td {
+    border-bottom: 1px solid #2F2E33;
+    padding: 10px;
+  }
+
+.left {
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.right {
+    text-align: right;
+}
+
+@media screen and (max-width: 1140px) {
+    .container{
+        width: calc(100% - 100px);
+        padding: 20px;
+    }
+  }
