@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #232323;
+    background: var(--grey);
     overflow: hidden;
     width: 100%;
     padding: 1rem 0;
@@ -9,8 +9,30 @@ img {
     margin-bottom: -3px;
 }
 
+.modeToggle {
+    cursor: pointer;
+    color: var(--white);
+    background: var(--gradient);
+    margin: 5px 20px;
+    float: right;
+    border-radius: 50%;
+    font-size: 1.2em;
+    font-weight: 900;
+    -webkit-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+}
+
+.modeToggle i {
+    padding: 5px;
+}
+
+.modeToggle:hover {
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+}
+
 h1 {
-    color: #fff;
+    color: var(--logo-bg);
     font-size: 2rem;
     float: left;
     margin: auto 30px;

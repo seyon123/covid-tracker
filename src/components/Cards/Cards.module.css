@@ -6,12 +6,12 @@
     flex-wrap: wrap;
 }
 .card {
-    color: white;
+    color: var(--light);
     width: 300px;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-    background-color: #232323;
+    background-color: var(--grey);
     
 }
 

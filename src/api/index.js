@@ -49,12 +49,13 @@ export const fetchProvince = async (country) => {
     let url = `${api}/historical/${country}/?lastdays=1`;
     
     try {
-        const{
-            data: {province},
-        } = await axios.get(url);
+        if (country) {
+            const{
+                data: {province},
+            } = await axios.get(url);
 
-        return {province}
-        
+            return {province}
+        }
     } catch (error) {
         return error;
     }

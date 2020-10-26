@@ -5,10 +5,12 @@ import styles from "./Header.module.css";
 const Footer = () => {
     return (
         <div className={styles.navbar}>
-                <h1>
-                    C<img src="logo.png" width="30" alt="logo"/>VID-19 Tracker
-                </h1>
-            </div>
+            <h1>
+                C<img src="logo.png" width="30" alt="logo" />
+                VID-19 Tracker
+            </h1>
+            <div id="modeToggle" className={styles.modeToggle}><i className="far fa-moon"></i></div>
+        </div>
     );
 };
 

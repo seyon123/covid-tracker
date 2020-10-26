@@ -3,19 +3,19 @@
     justify-content: center;
     width: 1060px;
     margin: 30px;
-    background-color: #232323;
+    background-color: var(--grey);
     border-radius: 10px;
     padding: 20px;
 }
 
 table {
-    color: white;
+    color: var(--light);
     width: 100%; 
     border-collapse: collapse; 
 }
 
 th{
-    border-bottom: 1px solid #AAAAAA;
+    border-bottom: 1.5px solid #2F2E33;
     padding: 10px;
 }
 

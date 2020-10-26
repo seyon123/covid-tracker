@@ -12,8 +12,8 @@
     font-size: 16px;
     border: none;
     text-align: center;
-    background-color: #232323;
-    color: white;
+    background-color: var(--grey);
+    color: var(--light);
 }
 
 .title {
@@ -30,7 +30,7 @@
   font-size: 14px;
   border: none;
   text-align: center;
-  background-color: #232323;
-  color: white;
+  background-color: var(--grey);
+  color: var(--light);
 }
 
