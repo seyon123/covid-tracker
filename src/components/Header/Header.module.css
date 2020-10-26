@@ -46,4 +46,10 @@ h1 {
         justify-content: center;
         flex-direction: column;
     }
+
+    .modeToggle {
+        position: absolute;
+        right: 0;
+        top: 90px
+    }
 }
