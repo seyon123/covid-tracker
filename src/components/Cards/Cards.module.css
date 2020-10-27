@@ -5,14 +5,20 @@
     width: 100%;
     flex-wrap: wrap;
 }
+
+.updated{
+    color: #666666;
+    font-size: 14px;
+    margin: 0px;
+}
+
 .card {
     color: var(--light);
     width: 300px;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-    background-color: var(--grey);
-    
+    background-color: var(--grey); 
 }
 
 .card h2{
@@ -44,7 +50,8 @@
     color: rgb(204, 2, 2);
 }
 
-.updated{
-    color: #666666;
-    font-size: 14px;
+@media screen and (max-width: 1140px) {
+    .card {
+        width: calc(100% - 60px);
+    }
 }

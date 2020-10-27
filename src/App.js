@@ -14,8 +14,6 @@ class App extends React.Component {
     provinceData: {},
     isLoading: true
   }
-
-  
   
   async componentDidMount(country) {
 
@@ -50,7 +48,7 @@ class App extends React.Component {
     	const provinces = await fetchProvince(country);
     	const isLoading = false;
     	this.setState({ data, chartData, country: country, provinces, isLoading });
-	}, 1200);
+	}, 0);
     
   }
 
@@ -62,14 +60,17 @@ class App extends React.Component {
 		const chartData = await fetchDailyData(country);
 		const provinces = await fetchProvince(country);
 
-		var provinceData = [];
-		for(var i = 0; i < Object.values(provinces.province).length; i++){
-			provinceData.push(await fetchProvinceData(country, Object.values(provinces.province)[i]));
+		if (country){
+			var provinceData = [];
+			for(var i = 0; i < Object.values(provinces.province).length; i++){
+				provinceData.push(await fetchProvinceData(country, Object.values(provinces.province)[i]));
+			}
 		}
+		
 
 		const isLoading = false;
 		this.setState({ data, chartData, country: country, provinceData, isLoading });
-	}, 800);
+	}, 0);
   }
   
   render() {

@@ -18,7 +18,8 @@
 .disclaimer {
     color: #666666;
     display: inline;
-    width: 1100px;
+    width: 980px;
+    font-size: 16px;
 }
 
 @media screen and (max-width: 1140px) {
