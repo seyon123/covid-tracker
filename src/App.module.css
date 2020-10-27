@@ -18,13 +18,13 @@
 .disclaimer {
     color: #666666;
     display: inline;
-    width: 980px;
+    width: 1090px;
     font-size: 16px;
 }
 
 @media screen and (max-width: 1140px) {
     .disclaimer{
-        width: calc(100% - 60px);
+        width: calc(100% - 40px);
         font-size: 14px;
     }
   }
