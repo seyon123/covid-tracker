@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { fetchCountries } from "../../api";
-import { Dropdown } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
 
 import styles from "./Country.module.css";
 
