@@ -45,33 +45,47 @@ export const fetchDailyData = async (country) => {
     }
 };
 
-export const fetchProvince = async (country) => {
-    let url = `${api}/historical/${country}/?lastdays=1`;
+// export const fetchProvince = async (country) => {
+//     let url = `${api}/historical/${country}/?lastdays=1`;
     
+//     try {
+//         if (country) {
+//             const{
+//                 data: {province},
+//             } = await axios.get(url);
+
+//             return {province}
+//         }
+//     } catch (error) {
+//         return error;
+//     }
+// }
+
+// export const fetchProvinceData = async (country, province) => {
+//     let url = `${api}/historical/${country}/${province}?lastdays=1`;
+
+//     try {
+//         if (province) {
+//         const{
+//             data: {timeline: {cases, deaths, recovered}},
+//         } = await axios.get(url);
+
+//         return {province, cases, deaths, recovered}
+//         }
+//     } catch (error) {
+//         return error;
+//     }
+// }
+
+export const fetchRegionData = async (countryIn) => {
+    let url = `${api}/jhucsse`;
+
     try {
-        if (country) {
-            const{
-                data: {province},
-            } = await axios.get(url);
-
-            return {province}
-        }
-    } catch (error) {
-        return error;
-    }
-}
-
-export const fetchProvinceData = async (country, province) => {
-    let url = `${api}/historical/${country}/${province}?lastdays=1`;
-
-    try {
-        if (province) {
-        const{
-            data: {timeline: {cases, deaths, recovered}},
-        } = await axios.get(url);
-
-        return {province, cases, deaths, recovered}
-        }
+        const{data} = await axios.get(url);
+        return data.filter(
+            function (region) {
+                return region.country === countryIn;
+            }).map(({country, stats: {confirmed, deaths, recovered}, province}) => ({country, province, confirmed, deaths, recovered}));
     } catch (error) {
         return error;
     }
@@ -82,7 +96,7 @@ export const fetchProvinceData = async (country, province) => {
 export const fetchCountries = async () => {
     try {
         const { data } = await axios.get(
-            "https://disease.sh/v3/covid-19/historical?lastdays=1"
+            `${api}/jhucsse`
         );
         return [...new Set(data.map((country,) => (country.country)))];
     } catch (error) {

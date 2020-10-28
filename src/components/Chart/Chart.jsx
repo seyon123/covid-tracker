@@ -39,9 +39,10 @@ const Chart = ({ data: { cases, deaths, recovered }, country }) => {
                     },
                 ],
             }}
+            height={500}
             options={{
                 responsive: true,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
 				scales: {
 					xAxes: [
 					  {

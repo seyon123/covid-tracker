@@ -2,10 +2,11 @@ import React from "react";
 
 import styles from "./Provinces.module.css";
 
-const Provinces = ({ provinces, country }) => {
+const Provinces = ({ provinces, handleRegionChange }) => {
     
     return (
         <div className={styles.container}>
+            <input onChange={(e) => handleRegionChange(provinces[0].country, e.target.value)} className={styles.searchbox} type="text" placeholder="Search for a region..."></input>
             <table>
                 <tbody>
                     <tr>
@@ -17,9 +18,9 @@ const Provinces = ({ provinces, country }) => {
                     { provinces.map((province, i) => (
                         <tr key={i}>
                             <td className={styles.left}>{province.province}</td>
-                            <td className={styles.right}>{Object.values(province.cases)}</td>
-                            <td className={styles.right}>{Object.values(province.recovered)}</td>
-                            <td className={styles.right}>{Object.values(province.deaths)}</td>
+                            <td className={styles.right}>{province.confirmed}</td>
+                            <td className={styles.right}>{province.recovered}</td>
+                            <td className={styles.right}>{province.deaths}</td>
                         </tr>
                     ))}
                 </tbody>

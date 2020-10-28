@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './App.module.css';
 
 import {Header, Cards, Chart, Country, Provinces, Footer} from './components';
-import { fetchData, fetchDailyData, fetchProvinceData, fetchProvince } from './api'
+import { fetchData, fetchDailyData, fetchRegionData } from './api'
 import ReactLoading from 'react-loading';
 
 class App extends React.Component {
@@ -45,9 +45,9 @@ class App extends React.Component {
 	setTimeout(async () => { 
 		const data = await fetchData(country);
     	const chartData = await fetchDailyData(country);
-    	const provinces = await fetchProvince(country);
+    	const regions = await fetchRegionData(country);
     	const isLoading = false;
-    	this.setState({ data, chartData, country: country, provinces, isLoading });
+    	this.setState({ data, chartData, country: country, regions, isLoading });
 	}, 0);
     
   }
@@ -58,24 +58,31 @@ class App extends React.Component {
 	setTimeout(async () => { 
 		const data = await fetchData(country);
 		const chartData = await fetchDailyData(country);
-		const provinces = await fetchProvince(country);
-
-		if (country){
-			var provinceData = [];
-			for(var i = 0; i < Object.values(provinces.province).length; i++){
-				provinceData.push(await fetchProvinceData(country, Object.values(provinces.province)[i]));
-			}
-		}
-		
-
+		const regions = await fetchRegionData(country);
 		const isLoading = false;
-		this.setState({ data, chartData, country: country, provinceData, isLoading });
+		this.setState({ data, chartData, country: country, regions, isLoading });
+	}, 0);
+  }
+
+  handleRegionChange =  (country, search) => {
+	setTimeout(async () => { 
+		const regions1 = await fetchRegionData(country);
+		var regions = regions1.filter(
+			function (region) {
+				return (region.province).toLowerCase().includes(search.toLowerCase());
+			}
+		);
+		console.log(regions);
+		if (regions.length === 0){
+			regions = [{confirmed: "No Data", country: country, deaths: "No Data", province: "No Data", recovered: "No Data"}]
+		}
+		this.setState({ regions });
 	}, 0);
   }
   
   render() {
 
-    const { data, chartData, country, provinceData, isLoading } = this.state;
+    const { data, chartData, country, regions, isLoading } = this.state;
 
     return (
       <div className={styles.container}>
@@ -89,7 +96,7 @@ class App extends React.Component {
         		<Country handleCountryChange={this.handleCountryChange} countryIn= {country} />
         		<Cards data={data}/>
         		<Chart data={chartData} country={country} />
-        		{(country === "" || country === undefined || provinceData[0].province === "mainland") ? "" : <Provinces provinces={provinceData} country={country}/>}
+        		{(country === "" || country === undefined || regions.length === 0 || Object.values(regions)[0].province === null) ? "" : <Provinces handleRegionChange={this.handleRegionChange} provinces={regions}/>}
 				<p className={styles.disclaimer}>* Realtime data from credible sources linked below. Actual numbers might take time to be reflected. </p>
 			</div>
 		)}

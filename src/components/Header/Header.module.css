@@ -52,4 +52,12 @@
         right: 0;
         top: 90px
     }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .logo img {
+        margin-bottom: -6px;
+    }
 }
