@@ -9,9 +9,21 @@
     padding: 20px;
 }
 
+.outerContainer{
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 1140px) {
     .container{
-        width: calc(100% - 80px);
+        width: calc(100% - 40px);
+        padding: 20px;
+    }
+
+    .outerContainer{
+        width: calc(100% - 40px);
         padding: 20px;
     }
 }

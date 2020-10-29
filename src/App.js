@@ -72,7 +72,6 @@ class App extends React.Component {
 				return (region.province).toLowerCase().includes(search.toLowerCase());
 			}
 		);
-		console.log(regions);
 		if (regions.length === 0){
 			regions = [{confirmed: "No Data", country: country, deaths: "No Data", province: "No Data", recovered: "No Data"}]
 		}

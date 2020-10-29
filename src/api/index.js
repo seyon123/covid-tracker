@@ -21,10 +21,22 @@ export const fetchData = async (country) => {
 };
 
 
+const buildChartData = (data) => {
+    let chartData = {};
+    let lastDataPoint;
+    for (let date in data) {
+      if (lastDataPoint) {
+        chartData[date] = (data[date] - lastDataPoint);
+      }
+      lastDataPoint = data[date];
+    }
+    return chartData;
+  };
+
 export const fetchDailyData = async (country) => {
     
-    let url1 = `${api}/historical/all?lastdays=all`;
-    let url2 = `${api}/historical/${country}?lastdays=all`;
+    let url1 = `${api}/historical/all?lastdays=120`;
+    let url2 = `${api}/historical/${country}?lastdays=120`;
     
     try {
 
@@ -32,12 +44,18 @@ export const fetchDailyData = async (country) => {
             const{
                 data: {timeline: {cases, deaths, recovered}},
             } = await axios.get(url2);
-            return {cases, deaths, recovered}
+            let cases2 = buildChartData(cases);
+            let deaths2 = buildChartData(deaths);
+            let recovered2 = buildChartData(recovered);
+            return {cases, deaths, recovered, cases2, deaths2, recovered2}
         }else {
             const{ 
                 data: {cases, deaths, recovered},
             } = await axios.get(url1);
-            return {cases, deaths, recovered}
+            let cases2 = buildChartData(cases);
+            let deaths2 = buildChartData(deaths);
+            let recovered2 = buildChartData(recovered);
+            return {cases, deaths, recovered, cases2, deaths2, recovered2}
         }
         
     } catch (error) {
@@ -45,37 +63,6 @@ export const fetchDailyData = async (country) => {
     }
 };
 
-// export const fetchProvince = async (country) => {
-//     let url = `${api}/historical/${country}/?lastdays=1`;
-    
-//     try {
-//         if (country) {
-//             const{
-//                 data: {province},
-//             } = await axios.get(url);
-
-//             return {province}
-//         }
-//     } catch (error) {
-//         return error;
-//     }
-// }
-
-// export const fetchProvinceData = async (country, province) => {
-//     let url = `${api}/historical/${country}/${province}?lastdays=1`;
-
-//     try {
-//         if (province) {
-//         const{
-//             data: {timeline: {cases, deaths, recovered}},
-//         } = await axios.get(url);
-
-//         return {province, cases, deaths, recovered}
-//         }
-//     } catch (error) {
-//         return error;
-//     }
-// }
 
 export const fetchRegionData = async (countryIn) => {
     let url = `${api}/jhucsse`;
@@ -90,7 +77,6 @@ export const fetchRegionData = async (countryIn) => {
         return error;
     }
 }
-
 
 
 export const fetchCountries = async () => {
